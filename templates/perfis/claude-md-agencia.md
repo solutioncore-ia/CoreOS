@@ -18,6 +18,8 @@ Aqui ficam todos os clientes, propostas, conteúdo e entregas."]
 - `propostas/` — propostas em andamento
 - `marketing/` — conteúdo institucional da agência
 - `saidas/` — documentos pontuais, análises
+- `financeiro/` — raio-x mensal (`/financeiro`) e cálculo de preço de proposta (`/precificar`)
+- `vendas/` — pipeline de leads antes de virar `briefings/` (`/funil`)
 - `dados/` — arquivos a analisar (relatórios de cliente, exports)
 - `tarefas.md` — pipeline da agência
 

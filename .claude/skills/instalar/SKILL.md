@@ -35,6 +35,14 @@ Se algum já tiver conteúdo real, perguntar:
 
 Se for setup limpo, seguir direto.
 
+### 3. Checkup de ambiente
+
+Checar rapidamente, sem incomodar o usuário se tudo estiver ok:
+- `gh --version` (necessário pro `/salvar` criar repositório automaticamente)
+- `node --version` (necessário pros scripts de `/carrossel` e `/aprovar-post`)
+
+Não bloquear o setup se algo faltar — só registrar mentalmente e avisar na Fase 6 quais integrações vão precisar de configuração quando forem usadas pela primeira vez. O objetivo é o usuário nunca ser pego de surpresa no meio de uma skill por falta de ferramenta.
+
 ---
 
 ## Fase 1 — Escolha do perfil
@@ -59,18 +67,23 @@ Fazer essas perguntas em ordem, esperando a resposta de cada uma antes de seguir
 2. "O que sua empresa entrega, em uma frase do jeito que você falaria pro vizinho?"
 3. "Quem te paga? (perfil de cliente real — descreve em uma ou duas frases, sem persona genérica)"
 4. "Você toca sozinho ou tem equipe? Se tem, quantos e cada um fazendo o quê?"
+5. "Em que momento o negócio tá hoje?
+   a) Ainda validando a ideia, sem cliente pagante ainda
+   b) Primeiro cliente, testando se funciona
+   c) Já fatura, mas de forma irregular
+   d) Faturamento estável, focando em escalar"
 
 **Sobre voz:**
-5. "Me cola um exemplo da tua escrita — uma legenda do Insta, um email pra cliente, qualquer coisa real e recente. Assim eu calibro o jeito de escrever sem precisar adivinhar."
-6. "O que te dá ranço quando alguém escreve assim? (ex: 'vamos juntos!', emoji em email formal, 'caro cliente', jargão de guru, 'alavancar', 'sinergia')"
+6. "Me cola um exemplo da tua escrita — uma legenda do Insta, um email pra cliente, qualquer coisa real e recente. Assim eu calibro o jeito de escrever sem precisar adivinhar."
+7. "O que te dá ranço quando alguém escreve assim? (ex: 'vamos juntos!', emoji em email formal, 'caro cliente', jargão de guru, 'alavancar', 'sinergia')"
 
 **Sobre foco:**
-7. "Qual o gargalo do teu negócio hoje? O que tá segurando ele de crescer?"
-8. "Se eu pudesse tirar UMA coisa que você repete toda semana das tuas costas, qual seria?"
+8. "Qual o gargalo do teu negócio hoje? O que tá segurando ele de crescer?"
+9. "Se eu pudesse tirar UMA coisa que você repete toda semana das tuas costas, qual seria?"
 
 **Sobre identidade visual:**
-9. "Tem identidade visual definida ou tá no zero? Se tem, me passa as cores principais e a fonte."
-10. "Tem logo? Se sim, joga o arquivo em `identidade/logo.png` (ou `.svg`) e me confirma."
+10. "Tem identidade visual definida ou tá no zero? Se tem, me passa as cores principais e a fonte."
+11. "Tem logo? Se sim, joga o arquivo em `identidade/logo.png` (ou `.svg`) e me confirma."
 
 ---
 
@@ -80,19 +93,20 @@ Fazer essas perguntas em ordem, esperando a resposta de cada uma antes de seguir
 Preencher com base nas perguntas 1-4. Manter formato simples — nome, o que faz, perfil de cliente, equipe.
 
 ### `_memoria/preferencias.md`
-Preencher com base nas perguntas 5-6. Estrutura:
-- **Tom de voz:** derivar do exemplo de escrita real da pergunta 5 (descrever em 2-3 frases o jeito de escrever, com referência ao exemplo)
-- **O que evitar:** lista direta da resposta 6
+Preencher com base nas perguntas 6-7. Estrutura:
+- **Tom de voz:** derivar do exemplo de escrita real da pergunta 6 (descrever em 2-3 frases o jeito de escrever, com referência ao exemplo)
+- **O que evitar:** lista direta da resposta 7
 - **Estilo geral:** síntese do que combina e o que destoa
 
 ### `_memoria/estrategia.md`
-Preencher com base nas perguntas 7-8. Estrutura:
-- **Gargalo atual:** [resposta da 7]
-- **Pra tirar das costas:** [resposta da 8] — registrar como candidata a virar skill via `/mapear-rotinas`
-- **Próximas prioridades:** derivar do gargalo (o que ataca o gargalo direto)
+Preencher com base nas perguntas 5, 8 e 9. Estrutura:
+- **Fase:** [resposta da 5 — validando ideia / primeiro cliente / fatura irregular / faturamento estável]
+- **Gargalo atual:** [resposta da 8]
+- **Pra tirar das costas:** [resposta da 9] — registrar como candidata a virar skill via `/mapear-rotinas`
+- **Próximas prioridades:** derivar do gargalo e da fase (ver Fase 6 pra como a fase muda a recomendação)
 
 ### `identidade/design-guide.md`
-Se o usuário forneceu cores/fontes/logo (perguntas 9-10), preencher os campos correspondentes. Se não, deixar como está e avisar:
+Se o usuário forneceu cores/fontes/logo (perguntas 10-11), preencher os campos correspondentes. Se não, deixar como está e avisar:
 > "Deixei o `identidade/design-guide.md` em branco. Sempre que você definir uma identidade visual, edita lá — as skills de carrossel, proposta e slide leem esse arquivo antes de criar qualquer visual."
 
 ### `CLAUDE.md`
@@ -144,6 +158,13 @@ Se a pasta já tem nome próprio (não genérico), pular essa fase.
 
 ## Fase 6 — Próximos passos
 
+Adaptar a recomendação de skills conforme a fase informada na pergunta 5 — não empurrar ferramenta de escala pra quem ainda tá validando:
+
+- **(a) Validando ideia:** priorizar `/funil` (registrar toda conversa com possível cliente desde já) e `/precificar` (chegar na primeira conversa de venda com preço calculado, não achismo)
+- **(b) Primeiro cliente:** `/funil` pra não perder o fio de quem já demonstrou interesse, e `/precificar` se ainda não tiver preço fechado
+- **(c) Fatura irregular:** `/financeiro` primeiro, pra entender se o problema é vendas ou é custo — só depois decidir se vale investir em `/anuncio-google` ou `/seo`
+- **(d) Faturamento estável, escalando:** pode ir direto pras skills de conteúdo/ads/SEO — sugerir `/financeiro` mensal como hábito de acompanhamento, não como urgência
+
 > "Pronto. O CoreOS já te conhece.
 >
 > No começo de cada sessão de trabalho, roda `/abrir` — eu carrego tudo
@@ -151,9 +172,13 @@ Se a pasta já tem nome próprio (não genérico), pular essa fase.
 > carrossel, plano de SEO, campanha ou qualquer outra coisa, é só
 > chamar a skill que cabe.
 >
-> Você mencionou que repete '<resposta da pergunta 8>' toda semana.
+> Pelo que você me contou, faz sentido começar por [skill(s) recomendada(s) conforme a fase].
+>
+> Você mencionou que repete '<resposta da pergunta 9>' toda semana.
 > Quando quiser tirar isso das costas de vez, roda `/mapear-rotinas`
 > que eu transformo em skill própria."
+
+Se algo do checkup de ambiente (Pré-checagem, item 3) tiver faltado, mencionar aqui: "notei que `gh`/`node` não tá instalado — só vai precisar disso quando for usar `/salvar`/`/carrossel`, não bloqueia nada agora."
 
 Se o usuário quiser publicar o trabalho no GitHub, mencionar `/salvar`.
 

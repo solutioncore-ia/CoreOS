@@ -17,6 +17,8 @@ com audiência e fecho venda."]
 - `saidas/` — análises, emails, documentos pontuais
 - `produtos/` — meus produtos próprios (cursos, ebooks, ofertas)
 - `audiencia/` — listas, dados, contatos da minha base
+- `financeiro/` — raio-x mensal (`/financeiro`) e cálculo de preço (`/precificar`)
+- `vendas/` — pipeline de quem foi contatado (`/funil`)
 - `dados/` — arquivos a analisar (CSV, PDF, planilha)
 - `scripts/` — utilitários (gerar imagem, postar, render)
 - `tarefas.md` — o que tá em jogo agora

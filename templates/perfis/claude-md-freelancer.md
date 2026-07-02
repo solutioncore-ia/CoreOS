@@ -16,6 +16,8 @@ Aqui ficam todos os clientes, briefings, entregas e cobrança."]
 - `propostas/` — propostas em rascunho ou enviadas
 - `marketing/` — meu próprio conteúdo (Insta, LinkedIn, portfolio)
 - `saidas/` — emails, documentos pontuais
+- `financeiro/` — raio-x mensal (`/financeiro`) e cálculo de preço (`/precificar`)
+- `vendas/` — pipeline de prospecção (`/funil`)
 - `dados/` — arquivos a analisar
 - `tarefas.md` — pipeline, prazos, próximos passos
 

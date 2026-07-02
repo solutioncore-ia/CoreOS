@@ -4,8 +4,8 @@
 
 Você acaba de instalar o CoreOS. Em alguns minutos, sua empresa vai
 ter uma memória própria, uma identidade visual aplicada em tudo que
-o sistema gerar, e 15 skills prontas pra fazer marketing, SEO, ads
-e operação rodarem com você dirigindo.
+o sistema gerar, e 18 skills prontas pra fazer marketing, SEO, ads,
+dinheiro, vendas e operação rodarem com você dirigindo.
 
 Bora voar.
 
@@ -57,6 +57,13 @@ a memória · `/novo-projeto` cria pasta isolada pra cada cliente ou
 iniciativa · `/mapear-rotinas` descobre o que você repete e transforma
 em skill personalizada.
 
+**Dinheiro e vendas** — saber se o negócio é viável e fechar venda
+`/precificar` calcula preço de serviço/produto com margem real, mostrando
+a conta aberta · `/financeiro` lê extrato/notas e devolve um raio-x
+simples de quanto entrou, saiu e sobrou no mês · `/funil` mantém o
+pipeline de vendas — quem foi contatado, em que fase tá, o que fazer
+a seguir.
+
 **Conteúdo e SEO** — vitrine pública da empresa
 `/carrossel` cria carrosséis 1080×1350 com identidade da marca (com ou
 sem foto IA) · `/publicar-tema` pega um tema e entrega artigo de blog +
@@ -100,5 +107,5 @@ lê isso antes de cada resposta. Quanto melhor a memória, melhor o sistema.
 `identidade/` é o rosto. Cores, fontes, logo, padrão visual. Todo
 carrossel, slide, peça que o sistema gera respeita isso.
 
-`marketing/`, `saidas/` e `scripts/` são o resultado. O sistema produz,
-versiona no GitHub, fica tudo seu.
+`marketing/`, `saidas/`, `financeiro/`, `vendas/` e `scripts/` são o
+resultado. O sistema produz, versiona no GitHub, fica tudo seu.
