@@ -26,7 +26,7 @@ Curto e direto. O objetivo é carregar contexto e devolver uma síntese de uma f
 
 ```
 [Nome do negócio] — [o que faz em 5-8 palavras]
-Foco atual: [prioridade da estratégia, em uma frase]
+Fase: [validando ideia | primeiro cliente | fatura irregular | escalando] · Foco: [prioridade da estratégia, em uma frase]
 Tom: [resumo de 3-4 palavras do tom de voz]
 
 Pronto. O que vamos fazer?

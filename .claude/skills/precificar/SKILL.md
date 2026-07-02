@@ -33,15 +33,20 @@ Conforme o tipo, perguntar só o que se aplica:
 
 - **Custo direto:** materiais, ferramentas pagas, terceirizados/freelancers envolvidos nessa entrega específica
 - **Tempo investido:** quantas horas essa entrega toma (do início ao fim, incluindo revisão/ajuste), e quanto vale a hora do usuário (se não souber, ajudar a estimar: quanto ele precisa faturar por mês ÷ horas disponíveis)
+- **Impostos/taxas:** qual o regime tributário (MEI, Simples Nacional, autônomo) e a alíquota aproximada sobre essa nota/recebimento — esse valor entra no custo, não sai do lucro depois. Se o usuário não souber, perguntar antes de seguir; não assumir alíquota
 - **Custo fixo rateado** (só se fizer sentido pro perfil — empresa/agência com estrutura): quanto dos custos fixos mensais (ferramentas, equipe, aluguel) essa entrega deveria carregar
 
 Se o usuário não souber algum número, ajudar a estimar com uma pergunta simples em vez de travar ("quantas horas mais ou menos, no chute?").
 
 ### Passo 3 — Calcular as três referências
 
+Imposto incide sobre o valor bruto recebido, não é um custo fixo somado — por isso entra dividindo, não somando (senão o usuário paga imposto sobre o próprio imposto sem perceber):
+
 ```
-Preço mínimo viável = custo direto + (horas × valor-hora) + rateio de fixo
-Preço-alvo          = preço mínimo viável × (1 + margem desejada)
+Custo real (líquido) = custo direto + (horas × valor-hora) + rateio de fixo
+
+Preço mínimo viável = custo real ÷ (1 - alíquota)
+Preço-alvo          = (custo real × (1 + margem desejada)) ÷ (1 - alíquota)
 Teto de mercado      = o que o usuário souber que o mercado paga (se souber)
 ```
 
@@ -55,8 +60,10 @@ Se o usuário não tiver margem em mente, sugerir 20-40% como faixa comum pra se
 **Custo direto:** R$ XXX
 **Tempo:** N horas × R$ XX/hora = R$ XXX
 **Rateio de fixo:** R$ XXX (se aplicável)
+**Custo real (líquido):** R$ XXX
+**Alíquota (regime <MEI/Simples/autônomo>):** X%
 
-**Preço mínimo viável:** R$ XXX (cobre custo, sem lucro)
+**Preço mínimo viável:** R$ XXX (cobre custo + imposto, sem lucro)
 **Preço-alvo (margem de X%):** R$ XXX
 **Teto de mercado:** R$ XXX (se informado)
 
@@ -83,3 +90,4 @@ Guardar em `financeiro/precificacao/<item-slug>.md` com a conta completa e a dat
 - **Faturamento não é lucro.** Se o usuário confundir os dois, apontar a diferença.
 - **Perfil muda o cálculo.** Solopreneur/freelancer sem estrutura não tem "rateio de fixo" real — focar em tempo + custo direto + margem.
 - **Não inventar valor-hora.** Se o usuário não souber, ajudar a chegar num número com pergunta guiada, não assumir um valor de mercado genérico.
+- **Não inventar alíquota.** Se o usuário não souber o regime tributário, perguntar antes de calcular — nunca assumir uma alíquota "padrão", ela muda bastante entre MEI, Simples e autônomo.

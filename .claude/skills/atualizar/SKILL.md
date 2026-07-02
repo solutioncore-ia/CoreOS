@@ -26,7 +26,7 @@ Listar:
 Ler os arquivos de contexto e identificar:
 
 - **Em `_memoria/empresa.md`:** lista de clientes / serviços / ferramentas — bate com a realidade do workspace?
-- **Em `_memoria/estrategia.md`:** o foco atual ainda faz sentido (datas, prioridades)?
+- **Em `_memoria/estrategia.md`:** o foco atual ainda faz sentido (datas, prioridades)? A **Fase** declarada ainda bate com a realidade (ex: diz "validando ideia" mas já tem lead "Fechado" em `vendas/funil.md` ou pasta `clientes/` com conteúdo real)?
 - **Em `CLAUDE.md`:** as regras de organização e a estrutura de pastas listada batem com o que existe?
 - **Em `identidade/design-guide.md`:** continua coerente com o que foi gerado nas últimas peças (carrosséis, slides)?
 
