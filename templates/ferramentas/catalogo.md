@@ -146,16 +146,18 @@ claude mcp add canva -- npx -y @canva/canva-mcp-server
 ### Facebook Ads (Meta)
 **O que faz:** Gerencia campanhas do Meta (Facebook/Instagram Ads)
 **Precisa de conta:** Sim, Token Meta Business
-**Quando usar:** Nao usar este MCP — a skill `meta-ads-coreos` (ja instalada
-em `.claude/skills/`) cobre o mesmo escopo via SDK oficial, sem depender
-de MCP de terceiro.
+**Quando usar:** Prefira a skill `meta-ads-coreos` (ja instalada em
+`.claude/skills/`) — cobre o mesmo escopo via SDK oficial, sem depender
+de MCP de terceiro. Mantenha este MCP como alternativa de fallback caso
+a skill apresente algum problema (ela e experimental, ainda em validacao).
 
 ### Google Ads
 **O que faz:** Acessa e edita campanhas, busca dados de performance
 **Precisa de conta:** Sim, credenciais Google Ads
-**Quando usar:** Nao usar este MCP — a skill `google-ads-coreos` (ja
-instalada em `.claude/skills/`) cobre o mesmo escopo via SDK oficial,
-sem depender de MCP de terceiro.
+**Quando usar:** Prefira a skill `google-ads-coreos` (ja instalada em
+`.claude/skills/`) — cobre o mesmo escopo via SDK oficial, sem depender
+de MCP de terceiro. Mantenha este MCP como alternativa de fallback caso
+a skill apresente algum problema (ela e experimental, ainda em validacao).
 
 ### N8N
 **O que faz:** Dispara automacoes e workflows do N8N
