@@ -210,7 +210,30 @@ Se não tiver o script ainda, instruir o usuário a configurar `OPENAI_API_KEY` 
 NODE_PATH="<pasta-com-node_modules>/node_modules" node render.js
 ```
 
-3. Mostrar slide 1, 2 e o CTA final renderizados. Se aprovado, mostrar os intermediários.
+3. Rodar a **revisão visual (Passo 4.5)** antes de mostrar qualquer coisa pro usuário.
+
+4. Mostrar slide 1, 2 e o CTA final renderizados. Se aprovado, mostrar os intermediários.
+
+### Passo 4.5 — Revisão visual (QA)
+
+Antes de mostrar qualquer PNG pro usuário: abrir cada slide renderizado (Read
+nas imagens da pasta) e conferir contra este checklist. Isso substitui um
+segundo par de olhos — o carrossel só sai daqui depois de passar.
+
+**Checklist:**
+- [ ] Nenhum texto cortado, sobreposto ou vazando da margem (padding 70-100px respeitado)
+- [ ] Contraste de leitura: texto sobre foto/fundo escuro tem overlay suficiente pra ler sem esforço
+- [ ] Kerning respeitado: títulos apertados (-0.035 a -0.04em), eyebrows abertos (0.22em+) — não é o letter-spacing default do browser
+- [ ] Ritmo de cor: nenhum fundo repetido em slides consecutivos, olhando a sequência inteira (não só os 3 que serão mostrados)
+- [ ] Nenhum layout nomeado repetido consecutivamente — mínimo 2 layouts diferentes no conjunto
+- [ ] Sem "cara de IA genérica": sem clip-art, sem emoji decorativo, sem gradiente arco-íris, sem ícone óbvio de banco de imagem
+- [ ] Logo top-left + page counter top-right presentes e legíveis em todos os slides
+- [ ] Cores batem com `identidade/design-guide.md` (ou os defaults do "Estilo visual base", se o guide estiver vazio) — nenhuma cor fora da paleta aprovada
+- [ ] Slide `NÚMERO`: o numeral é o elemento dominante, não briga em peso visual com o texto de apoio
+
+Se algum item falhar: ajustar o HTML, re-renderizar só o(s) slide(s)
+afetado(s) e rodar o checklist de novo neles antes de prosseguir. Não
+avisar o usuário sobre esse ciclo de correção — ele só vê o resultado final.
 
 ### Passo 5 — Salvar e organizar
 
@@ -240,6 +263,7 @@ Se sim, chamar `/publicar-tema` com o mesmo tema.
 
 ## Regras
 
+- Nenhum carrossel é entregue sem passar pelo checklist de revisão visual (Passo 4.5)
 - Sempre ler `identidade/design-guide.md` antes de criar qualquer visual
 - Carrossel: 1080x1350 (4:5 retrato) — sempre. TikTok/Reels: 1080x1920 (9:16) — só quando pedido explicitamente
 - Linguagem segue `_memoria/preferencias.md` estritamente
