@@ -5,21 +5,13 @@ Skills externas prontas pra instalar. Use como referencia ao criar skills novas 
 > Skills globais ficam em `~/.claude/skills/` e funcionam em qualquer projeto.
 > Skills locais ficam em `.claude/commands/` e so funcionam nesse projeto.
 
----
-
-## Escrever copy e textos de venda
-
-### Schwartz Copy (resposta direta)
-**O que faz:** Escreve copy de vendas usando a metodologia de Eugene Schwartz (Breakthrough Advertising). Diagnostica o nivel de consciencia e sofisticacao do mercado antes de gerar qualquer texto.
-**Bom pra:** Landing pages, emails de venda, VSLs, cartas de venda, paginas de captura
-**Como instalar:** Ja vem como skill global. Chamar com `/schwartz-copy`
-**Fonte:** Skill validada pelo CoreOS
-
-### Ogilvy Copy (marca e posicionamento)
-**O que faz:** Gera copy institucional usando a metodologia de David Ogilvy. Pesquisa profunda, big idea, headlines informativas.
-**Bom pra:** Manifestos de marca, campanhas institucionais, taglines, brand voice, posicionamento
-**Como instalar:** Ja vem como skill global. Chamar com `/ogilvy-copy`
-**Fonte:** Skill validada pelo CoreOS
+> Schwartz Copy, Ogilvy Copy, GA4 CoreOS, Meta Ads CoreOS, Google Ads CoreOS
+> e Ads CoreOS ja vem instaladas por padrao em `.claude/skills/` — nao
+> precisam ser buscadas aqui. As quatro ultimas exigem configurar
+> credencial de API (token Meta, developer token Google Ads, service
+> account GA4) antes de funcionar; rode o `setup` de cada uma quando
+> tiver a primeira conta de cliente pra conectar. Veja o passo a passo
+> completo em "Anúncios pagos — setup" no README.
 
 ---
 
