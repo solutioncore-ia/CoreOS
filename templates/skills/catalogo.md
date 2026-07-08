@@ -5,9 +5,9 @@ Skills externas prontas pra instalar. Use como referencia ao criar skills novas 
 > Skills globais ficam em `~/.claude/skills/` e funcionam em qualquer projeto.
 > Skills locais ficam em `.claude/commands/` e so funcionam nesse projeto.
 
-> Schwartz Copy, Ogilvy Copy, GA4 CoreOS, Meta Ads CoreOS, Google Ads CoreOS
-> e Ads CoreOS ja vem instaladas por padrao em `.claude/skills/` — nao
-> precisam ser buscadas aqui. As quatro ultimas exigem configurar
+> Schwartz Copy, Ogilvy Copy, Canvas Design, GA4 CoreOS, Meta Ads CoreOS,
+> Google Ads CoreOS e Ads CoreOS ja vem instaladas por padrao em
+> `.claude/skills/` — nao precisam ser buscadas aqui. As quatro ultimas exigem configurar
 > credencial de API (token Meta, developer token Google Ads, service
 > account GA4) antes de funcionar; rode o `setup` de cada uma quando
 > tiver a primeira conta de cliente pra conectar. Veja o passo a passo
@@ -28,10 +28,10 @@ Skills externas prontas pra instalar. Use como referencia ao criar skills novas 
 ## Criar visuais e arte
 
 ### Canvas Design
-**O que faz:** Cria arte visual em PNG e PDF usando principios de design. Posters, capas, pecas graficas.
-**Bom pra:** Capas de ebook, banners, pecas visuais, thumbnails
-**Como instalar:** Ja vem nativo no Claude Code. Chamar com `/canvas-design`
-**Fonte:** Skill nativa do Claude Code
+**O que faz:** Cria arte visual em PNG e PDF usando principios de design. Posters, capas, pecas graficas. Trabalha em duas etapas: escreve uma filosofia de design e depois expressa ela no canvas, com refinamento final.
+**Bom pra:** Capas de ebook, banners, pecas visuais, thumbnails — o que foge do formato carrossel/post (esses sao do `/carrossel`)
+**Como instalar:** Ja vem instalada por padrao em `.claude/skills/canvas-design/` (com biblioteca de fontes propria em `canvas-fonts/`). Chamar com `/canvas-design`
+**Fonte:** Repositorio oficial anthropics/skills
 
 ---
 

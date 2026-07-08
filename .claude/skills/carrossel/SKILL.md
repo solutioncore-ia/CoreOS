@@ -42,6 +42,10 @@ Ao receber um pedido, identificar qual tipo se encaixa:
 - **Quando usar:** frase de impacto, dado/estatística, depoimento, bastidores
 - **Formato:** 1080x1350
 - **Estilo:** varia conforme o conteúdo (citação, número grande, foto com overlay)
+- **Referência sutil, não literal:** embutir o tema na composição em vez de
+  ilustrá-lo diretamente (ex: tema "conexão" → elemento gráfico que conecta duas
+  zonas do layout, não um ícone de plugue). Quem conhece o assunto sente; quem
+  não conhece só vê uma peça bem composta. Nada de ícone óbvio de banco de imagem
 
 Se o tipo não estiver claro, perguntar:
 > "Que tipo de conteúdo? (1) carrossel texto, (2) carrossel com foto, (3) post único"
@@ -116,6 +120,14 @@ Antes de definir a capa, considerar a **última capa publicada** pra alternar:
 - nunca duas capas iguais em sequência
 
 Se o usuário não souber qual foi a última, perguntar.
+
+### Direção estética por campanha (opcional)
+
+Ao iniciar uma série ou campanha nova (não post avulso), escrever 1 parágrafo
+de direção estética antes do primeiro visual — que sensação a série carrega,
+como isso aparece em forma, cor e ritmo — e salvar em
+`identidade/design-guide.md` (seção "Campanhas"). Posts seguintes da mesma
+série leem esse parágrafo e mantêm a unidade da grade.
 
 ### Linguagem (regra crítica)
 
@@ -234,6 +246,21 @@ segundo par de olhos — o carrossel só sai daqui depois de passar.
 Se algum item falhar: ajustar o HTML, re-renderizar só o(s) slide(s)
 afetado(s) e rodar o checklist de novo neles antes de prosseguir. Não
 avisar o usuário sobre esse ciclo de correção — ele só vê o resultado final.
+
+### Passo 4.6 — Passe de refinamento
+
+Depois que o checklist passar, fazer um segundo passe **qualitativo** em cada
+slide — sem adicionar nada novo. Se o instinto for criar mais um elemento,
+gradiente ou ícone, PARAR e perguntar: "como deixo o que já existe mais coeso?"
+O refinamento é sempre por subtração e ajuste fino:
+
+- Reduzir o que compete com o elemento principal (menos peso, menos cor, menor)
+- Ajustar espaçamentos pra composição respirar de forma intencional
+- Conferir alinhamentos ópticos (não só matemáticos) entre blocos
+- O resultado deve parecer trabalho meticuloso de alguém no topo do ofício —
+  não saída padrão de template
+
+Re-renderizar depois do refinamento. Só então mostrar ao usuário.
 
 ### Passo 5 — Salvar e organizar
 
