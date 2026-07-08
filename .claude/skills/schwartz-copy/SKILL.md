@@ -1,6 +1,6 @@
 ---
 name: schwartz-copy
-description: Gera copy de resposta direta usando a metodologia de Eugene Schwartz (Breakthrough Advertising). Use sempre que o usuário pedir para escrever copy de vendas, landing pages, emails de vendas, anúncios de resposta direta, headlines, leads, VSLs, cartas de vendas, páginas de captura, ou qualquer texto persuasivo focado em conversão. Também use quando o usuário mencionar "copy", "copywriting", "texto de vendas", "página de vendas", "Schwartz", "níveis de consciência", "sofisticação de mercado", ou pedir diagnóstico de mercado para calibrar comunicação. A skill diagnostica o nível de consciência e sofisticação do mercado antes de gerar qualquer copy, garantindo calibração precisa da mensagem.
+description: Copy de resposta direta com a metodologia de Eugene Schwartz (Breakthrough Advertising) — diagnostica nível de consciência e sofisticação do mercado antes de escrever. Use para copy de vendas, landing page, email de vendas, headline, VSL, página de captura, ou qualquer texto persuasivo focado em conversão; também quando mencionarem Schwartz, copywriting ou níveis de consciência.
 ---
 
 # Schwartz Copy — Copywriting de Resposta Direta

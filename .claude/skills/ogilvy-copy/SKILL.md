@@ -1,6 +1,6 @@
 ---
 name: ogilvy-copy
-description: Gera copy de marca e posicionamento usando a metodologia de David Ogilvy (Ogilvy on Advertising, Confessions of an Advertising Man). Use sempre que o usuário pedir para criar copy institucional, manifestos de marca, campanhas de branding, posicionamento, taglines, anúncios de imagem, textos editoriais para marcas, brand voice, naming, copy para print ads, ou qualquer texto publicitário focado em construção de marca e reputação a longo prazo. Também use quando o usuário mencionar "Ogilvy", "branding", "brand copy", "posicionamento de marca", "manifesto", "campanha institucional", "big idea", "brand voice", ou pedir ajuda com identidade verbal de marca. A skill aplica os princípios de Ogilvy de pesquisa profunda, big idea, headlines informativas e copy que vende sem parecer que está vendendo.
+description: Copy de marca e posicionamento com a metodologia de David Ogilvy — pesquisa profunda, big idea, headlines informativas, copy que vende sem parecer que está vendendo. Use para copy institucional, manifesto, branding, posicionamento, tagline, naming, brand voice, campanha de imagem, identidade verbal; também quando mencionarem Ogilvy.
 ---
 
 # Ogilvy Copy — Brand Advertising & Posicionamento
