@@ -1,6 +1,6 @@
 ---
 name: ga4-coreos
-description: Consulta dados do Google Analytics 4 via SDK oficial (google-analytics-data). Le propriedades, gera relatorios de sessoes, usuarios, pageviews, bounce rate, conversoes, fontes de trafego, landing pages, campanhas UTM, dispositivos, geo e dados em tempo real. Use quando o usuario mencionar google analytics, ga4, analytics, sessoes, usuarios, pageviews, bounce rate, fontes de trafego, landing pages, campanhas utm, tempo real, realtime, dados do site, comportamento do site, trafego do site, conversoes ga4. Tambem dispara com /ga4-coreos setup.
+description: Consulta dados do Google Analytics 4 via SDK oficial (google-analytics-data) — relatorios de sessoes, usuarios, pageviews, conversoes, fontes de trafego, landing pages, campanhas UTM, dispositivos, geo e tempo real. Use quando o assunto for google analytics / GA4 ou trafego e comportamento do site. Dispara com /ga4-coreos setup.
 ---
 
 # GA4 CoreOS

@@ -11,22 +11,37 @@ final dessa página com as regras específicas do seu negócio.
 
 ## Contexto do negócio
 
-No início de toda conversa, ler os seguintes arquivos (quando existirem
-e estiverem preenchidos):
+Carregar contexto sob demanda, conforme a tarefa — não ler tudo em toda
+conversa:
 
-1. `_memoria/empresa.md` — quem é o usuário, o que faz, como funciona o negócio
-2. `_memoria/preferencias.md` — tom de voz, estilo de escrita, o que evitar
-3. `_memoria/estrategia.md` — foco atual, prioridades, prazos
+- **Conteúdo, proposta, email, decisão de negócio ou cliente** →
+  ler `_memoria/empresa.md` e `_memoria/preferencias.md`
+- **Priorização, planejamento, "o que fazer agora"** →
+  ler `_memoria/estrategia.md`
+- **Tarefa visual** (carrossel, post, landing page) →
+  ler `identidade/design-guide.md`
+- **Tarefa técnica pontual** (código, análise de dados, arquivo avulso) →
+  o resumo do negócio neste arquivo já basta; não precisa ler `_memoria/`
 
-Usar essas informações como base pra qualquer resposta ou decisão. Ao
-sugerir prioridades, formatos ou abordagens, considerar o foco atual
-descrito em `estrategia.md`.
+O `/abrir` carrega tudo de uma vez no começo do dia. Não listar o que
+foi lido nem confirmar a leitura — apenas usar o contexto naturalmente.
 
-Pra qualquer tarefa visual (carrossel, post, landing page), consultar
-`identidade/design-guide.md` como referência de estilo.
+---
 
-Não é necessário listar o que foi lido nem confirmar a leitura. Apenas
-usar o contexto naturalmente.
+## Contexto em escala
+
+Este arquivo é carregado inteiro em toda sessão. Mantê-lo enxuto: regras
+de operação + resumo do negócio. Detalhe operacional não mora aqui.
+
+- **Contexto de cliente, produto ou projeto** vive num `CLAUDE.md` dentro
+  da própria pasta (ex: `clientes/<Nome>/CLAUDE.md`). O Claude Code
+  carrega esses arquivos automaticamente só quando o trabalho toca aquela
+  pasta. Cliente novo já nasce com o próprio CLAUDE.md; aqui na raiz
+  entra no máximo uma linha por cliente/projeto.
+- **Tarefas mecânicas de volume** (parsear extratos e CSVs, varrer muitos
+  arquivos, buscas amplas) → delegar ao agente `operacional`
+  (`.claude/agents/operacional.md`, roda em Haiku: mais rápido e barato).
+  Julgamento e estratégia ficam com o agente principal.
 
 ---
 

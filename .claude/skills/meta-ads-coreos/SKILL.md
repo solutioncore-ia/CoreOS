@@ -1,6 +1,6 @@
 ---
 name: meta-ads-coreos
-description: Gerencia campanhas Meta Ads (Facebook/Instagram) via SDK oficial. Le campanhas, conjuntos, anuncios, criativos e insights. Cria, edita, pausa, duplica e deleta objetos. Busca interesses, comportamentos e geolocalizacoes para targeting. Troca url_tags em criativos existentes. Use quando o usuario mencionar meta ads, facebook ads, instagram ads, campanha, conjunto de anuncios, ad set, criativo, targeting, publico, insights, metricas de anuncio, duplicar campanha, url_tags, utm, criar campanha, pausar campanha, orcamento de campanha, audiencia, lookalike, pixel. Tambem dispara com /meta-ads-coreos setup.
+description: Gerencia campanhas Meta Ads (Facebook/Instagram) via SDK oficial — le campanhas, conjuntos (ad sets), criativos e insights; cria, edita, pausa, duplica e deleta objetos; busca interesses e publicos para targeting (lookalike, pixel); troca url_tags/UTM. Use para qualquer operacao ou consulta em conta Meta Ads. Dispara com /meta-ads-coreos setup.
 ---
 
 # Meta Ads CoreOS

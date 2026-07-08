@@ -1,6 +1,6 @@
 ---
 name: ads-coreos
-description: Inteligência de tráfego pago — diagnóstico, relatório, auditoria e estratégia para Meta Ads e Google Ads. Usa benchmarks brasileiros, Quality Gates e Health Score. Use quando o usuário mencionar diagnóstico de conta, relatório de ads, auditoria de tráfego, performance de campanha, análise de conta, health score, benchmark, quality gate, dashboard de ads. Também dispara com /ads-coreos.
+description: Inteligência de tráfego pago — diagnóstico, relatório, auditoria e estratégia para Meta Ads e Google Ads, com benchmarks brasileiros, Quality Gates e Health Score. Use para diagnóstico ou auditoria de conta, relatório de ads, análise de performance de campanha, health score, benchmark. Dispara com /ads-coreos.
 ---
 
 # Ads CoreOS

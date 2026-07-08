@@ -1,6 +1,6 @@
 ---
 name: google-ads-coreos
-description: Gerencia campanhas Google Ads via SDK oficial (google-ads). Le campanhas, ad groups, keywords, anuncios, search terms, quality scores e insights com GAQL. Cria, edita, pausa e deleta objetos. Use quando o usuario mencionar google ads, campanhas de search, performance max, pmax, keywords, termos de busca, quality score, google adwords, criar campanha google, pausar campanha google, orcamento google ads, RSA, responsive search ad, sitelink, callout, negativas. Tambem dispara com /google-ads-coreos setup.
+description: Gerencia campanhas Google Ads via SDK oficial (GAQL) — le campanhas, ad groups, keywords, search terms, quality scores e insights; cria, edita, pausa e deleta objetos (Search, PMax, RSA, extensoes, negativas). Use para qualquer operacao ou consulta em conta Google Ads. Dispara com /google-ads-coreos setup.
 ---
 
 # Google Ads CoreOS
