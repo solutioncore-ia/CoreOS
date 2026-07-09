@@ -1,0 +1,513 @@
+<title>Diagnóstico Digital — Centro Oeste Distribuidora</title>
+<style>
+  :root{
+    --bg:#EAEDF1; --surface:#FFFFFF; --surface-2:#F4F6F8;
+    --ink:#161A20; --ink-soft:#3C444F; --muted:#69727E; --hair:#DCE1E7;
+    --accent:#EA5B0C;      /* torque orange */
+    --steel:#2F5D8A;       /* structural blue */
+    --good:#1F9D57; --warn:#DE9A16; --crit:#CE3B2E;
+    --good-bg:#E4F3EA; --warn-bg:#FBF0D6; --crit-bg:#FAE4E1;
+    --shadow:0 1px 2px rgba(20,30,45,.06),0 8px 28px rgba(20,30,45,.06);
+    --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Roboto Mono",Menlo,Consolas,monospace;
+    --wrap:1040px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0F1216; --surface:#171B21; --surface-2:#1E232B;
+      --ink:#E9EDF2; --ink-soft:#C0C7D0; --muted:#8B96A3; --hair:#2A313A;
+      --accent:#FF7A33; --steel:#6FA0D1;
+      --good:#3FBE76; --warn:#E7B23F; --crit:#E86154;
+      --good-bg:#12261A; --warn-bg:#2A2412; --crit-bg:#2A1613;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#EAEDF1; --surface:#FFFFFF; --surface-2:#F4F6F8;
+    --ink:#161A20; --ink-soft:#3C444F; --muted:#69727E; --hair:#DCE1E7;
+    --accent:#EA5B0C; --steel:#2F5D8A;
+    --good:#1F9D57; --warn:#DE9A16; --crit:#CE3B2E;
+    --good-bg:#E4F3EA; --warn-bg:#FBF0D6; --crit-bg:#FAE4E1;
+    --shadow:0 1px 2px rgba(20,30,45,.06),0 8px 28px rgba(20,30,45,.06);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0F1216; --surface:#171B21; --surface-2:#1E232B;
+    --ink:#E9EDF2; --ink-soft:#C0C7D0; --muted:#8B96A3; --hair:#2A313A;
+    --accent:#FF7A33; --steel:#6FA0D1;
+    --good:#3FBE76; --warn:#E7B23F; --crit:#E86154;
+    --good-bg:#12261A; --warn-bg:#2A2412; --crit-bg:#2A1613;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html{font-size:18.5px}
+  @media(max-width:760px){html{font-size:16.5px}}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;margin:0}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  section{padding:56px 0;border-top:1px solid var(--hair)}
+  h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em;
+    margin:0 0 6px;text-wrap:balance;line-height:1.15}
+  h3{font-size:1.06rem;font-weight:700;margin:0 0 4px;letter-spacing:-.01em}
+  p{margin:0 0 14px;color:var(--ink-soft);max-width:68ch}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  .lead{font-size:1.12rem;color:var(--ink-soft)}
+  strong{color:var(--ink);font-weight:700}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+  /* ---- Masthead ---- */
+  .mast{background:
+      radial-gradient(120% 140% at 88% -10%,rgba(234,91,12,.16),transparent 55%),
+      linear-gradient(180deg,var(--surface),var(--surface-2));
+    border-bottom:1px solid var(--hair)}
+  .mast .wrap{padding-top:34px;padding-bottom:44px}
+  .brandline{display:flex;justify-content:space-between;align-items:center;
+    gap:16px;flex-wrap:wrap;margin-bottom:40px}
+  .brand{font-family:var(--mono);font-size:.78rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .brand b{color:var(--ink)}
+  .stamp{font-family:var(--mono);font-size:.72rem;color:var(--muted);
+    border:1px solid var(--hair);border-radius:999px;padding:5px 12px;background:var(--surface)}
+
+  .hero{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center}
+  @media(max-width:760px){.hero{grid-template-columns:1fr;gap:32px}}
+  .hero h1{font-size:clamp(2rem,5.6vw,3.15rem);font-weight:800;letter-spacing:-.03em;
+    line-height:1.05;margin:0 0 18px;text-wrap:balance}
+  .hero .sub{font-size:1.12rem;color:var(--ink-soft);margin:0;max-width:44ch}
+  .tag{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--steel);font-weight:600;margin-bottom:18px}
+
+  /* ---- Score dial ---- */
+  .gauge{background:var(--surface);border:1px solid var(--hair);border-radius:18px;
+    padding:26px;box-shadow:var(--shadow);text-align:center}
+  .dial{position:relative;width:190px;height:190px;margin:2px auto 8px}
+  .dial svg{transform:rotate(-90deg)}
+  .dial .val{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center}
+  .dial .val b{font-family:var(--mono);font-size:3.1rem;font-weight:700;
+    letter-spacing:-.03em;line-height:1}
+  .dial .val span{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+  .verdict{font-size:.82rem;font-weight:700;letter-spacing:.02em;color:var(--crit);
+    text-transform:uppercase;font-family:var(--mono)}
+  .gauge p{font-size:.9rem;margin:8px 0 0;color:var(--muted);max-width:none}
+
+  /* ---- Thesis strip ---- */
+  .thesis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--hair);border:1px solid var(--hair);border-radius:16px;
+    overflow:hidden;margin-top:8px}
+  @media(max-width:680px){.thesis{grid-template-columns:1fr}}
+  .thesis div{background:var(--surface);padding:22px 20px}
+  .thesis b{display:block;font-family:var(--mono);font-size:2rem;font-weight:700;
+    letter-spacing:-.02em;line-height:1;margin-bottom:6px}
+  .thesis .k{font-size:.86rem;color:var(--muted);margin:0}
+  .c-good{color:var(--good)}.c-warn{color:var(--warn)}.c-crit{color:var(--crit)}
+  .c-accent{color:var(--accent)}
+
+  /* ---- Dimension bars ---- */
+  .bars{display:flex;flex-direction:column;gap:16px;margin-top:26px}
+  .bar-row{display:grid;grid-template-columns:210px 1fr 46px;gap:16px;align-items:center}
+  @media(max-width:640px){.bar-row{grid-template-columns:1fr;gap:5px}}
+  .bar-lbl{font-size:.92rem;font-weight:600;color:var(--ink)}
+  .bar-lbl small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+  .track{height:11px;background:var(--surface-2);border:1px solid var(--hair);
+    border-radius:999px;overflow:hidden}
+  .fill{height:100%;border-radius:999px}
+  .bar-num{font-family:var(--mono);font-size:.92rem;font-weight:600;text-align:right;
+    font-variant-numeric:tabular-nums}
+
+  /* ---- Table ---- */
+  .tablewrap{overflow-x:auto;border:1px solid var(--hair);border-radius:16px;
+    margin-top:24px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:620px;background:var(--surface)}
+  th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--hair);
+    font-size:.92rem;vertical-align:middle}
+  thead th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2)}
+  thead th a{color:inherit;text-decoration:underline;text-underline-offset:3px;
+    text-decoration-color:var(--hair);white-space:nowrap;transition:color .15s,text-decoration-color .15s}
+  thead th a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+  th.you a{color:var(--accent)}
+  tbody th{font-weight:600;color:var(--ink)}
+  th.you,td.you{background:rgba(234,91,12,.06)}
+  :root[data-theme="dark"] th.you,:root[data-theme="dark"] td.you{background:rgba(255,122,51,.08)}
+  @media(prefers-color-scheme:dark){th.you,td.you{background:rgba(255,122,51,.08)}}
+  .mk{font-family:var(--mono);font-weight:700;font-size:.9rem}
+  td small{color:var(--muted);font-weight:400}
+
+  /* ---- Vulnerabilities ---- */
+  .vulns{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+  .vuln{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:start;
+    background:var(--surface);border:1px solid var(--hair);border-left-width:4px;
+    border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+  @media(max-width:640px){.vuln{grid-template-columns:1fr;gap:10px}}
+  .vuln.crit{border-left-color:var(--crit)}
+  .vuln.warn{border-left-color:var(--warn)}
+  .rank{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--muted);
+    line-height:1;min-width:1.4em}
+  .vuln h3{margin-bottom:5px}
+  .vuln p{margin:0;font-size:.93rem;max-width:60ch}
+  .vuln .sev{font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;padding:4px 9px;border-radius:6px;white-space:nowrap;align-self:start}
+  .sev.crit{background:var(--crit-bg);color:var(--crit)}
+  .sev.warn{background:var(--warn-bg);color:var(--warn)}
+  .fixby{display:inline-block;margin-top:9px;font-family:var(--mono);font-size:.74rem;
+    color:var(--steel);font-weight:600}
+  .fixby b{color:var(--ink)}
+
+  /* ---- Money box ---- */
+  .money{background:linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--hair);border-radius:18px;padding:30px;box-shadow:var(--shadow);margin-top:24px}
+  .money .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:22px 0 4px}
+  @media(max-width:680px){.money .grid{grid-template-columns:1fr;gap:18px}}
+  .money .cell b{display:block;font-family:var(--mono);font-size:2.2rem;font-weight:700;
+    letter-spacing:-.02em;line-height:1.05;color:var(--accent)}
+  .money .cell span{font-size:.88rem;color:var(--muted)}
+  .assump{font-size:.82rem;color:var(--muted);border-top:1px dashed var(--hair);
+    padding-top:14px;margin:18px 0 0;max-width:none}
+
+  /* ---- 24h plan ---- */
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .qw{background:var(--surface);border:1px solid var(--hair);border-radius:14px;
+    padding:20px 22px;box-shadow:var(--shadow);position:relative}
+  .qw .prod{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin-bottom:9px;display:block}
+  .qw h3{margin-bottom:6px}
+  .qw p{font-size:.9rem;margin:0;max-width:none}
+
+  /* ---- Roadmap ---- */
+  .road{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  @media(max-width:680px){.road{grid-template-columns:1fr}}
+  .phase{background:var(--surface);border:1px solid var(--hair);border-radius:14px;
+    padding:22px;box-shadow:var(--shadow)}
+  .phase .when{font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--steel);
+    letter-spacing:-.02em;margin-bottom:2px}
+  .phase .goal{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;
+    font-family:var(--mono);margin-bottom:14px}
+  .phase ul{margin:0;padding-left:18px}
+  .phase li{font-size:.92rem;color:var(--ink-soft);margin-bottom:8px}
+
+  /* ---- Close ---- */
+  .close{background:
+      radial-gradient(120% 160% at 12% 10%,rgba(47,93,138,.14),transparent 55%),
+      linear-gradient(180deg,var(--surface),var(--surface-2));
+    border:1px solid var(--hair);border-radius:20px;padding:40px;margin-top:8px;box-shadow:var(--shadow)}
+  .close h2{margin-bottom:12px}
+  .close .contact{font-family:var(--mono);font-size:.86rem;color:var(--muted);margin-top:22px}
+  .close .contact b{color:var(--ink)}
+
+  .demo-cta{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;
+    margin-top:22px;padding:24px 28px;border-radius:18px;text-decoration:none;color:#fff;
+    background:linear-gradient(120deg,var(--accent),#c14607);box-shadow:var(--shadow);
+    transition:transform .15s,filter .15s}
+  .demo-cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .demo-cta:focus-visible{outline:3px solid var(--steel);outline-offset:3px}
+  .demo-txt{display:flex;flex-direction:column;gap:6px;max-width:62ch}
+  .d-eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+    opacity:.9;font-weight:700}
+  .demo-txt b{font-size:1.35rem;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .demo-txt .d{font-size:.93rem;opacity:.94;line-height:1.5}
+  .demo-btn{flex-shrink:0;background:#fff;color:var(--accent);font-weight:800;font-size:.98rem;
+    padding:14px 24px;border-radius:12px;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+
+  footer{padding:34px 0 60px;color:var(--muted);font-size:.8rem;font-family:var(--mono)}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="brandline">
+      <div class="brand"><b>Core Solution</b> — Diagnóstico Digital</div>
+      <div class="stamp">09 jul 2026 · confidencial</div>
+    </div>
+    <div class="hero">
+      <div>
+        <span class="tag">Centro Oeste Distribuidora · Peças automotivas · Goiânia / Aparecida</span>
+        <h1>Você tem o estoque e a audiência. Falta a máquina que vende.</h1>
+        <p class="sub">25 mil itens, entrega no mesmo dia e 19 mil seguidores — mas nenhuma venda acontece sem alguém digitando no WhatsApp em horário comercial. E a distribuição em Goiás ainda é digitalmente imatura: dá pra ser o primeiro a liderar, com a melhor audiência do setor — mas a janela está aberta pra quem se mexer antes.</p>
+      </div>
+      <div class="gauge">
+        <div class="dial">
+          <svg width="190" height="190" viewBox="0 0 190 190">
+            <circle cx="95" cy="95" r="82" fill="none" stroke="var(--surface-2)" stroke-width="15"/>
+            <circle cx="95" cy="95" r="82" fill="none" stroke="var(--crit)" stroke-width="15"
+              stroke-linecap="round" stroke-dasharray="515.2" stroke-dashoffset="324.6"/>
+          </svg>
+          <div class="val"><b>37</b><span>/ 100</span></div>
+        </div>
+        <div class="verdict">Saúde digital crítica</div>
+        <p>Base sólida, presença digital subaproveitada</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section style="border-top:none">
+    <span class="eyebrow">Leitura em 15 segundos</span>
+    <h2>O diagnóstico em três números</h2>
+    <div class="thesis">
+      <div>
+        <b class="c-good">19 mil</b>
+        <p class="k">seguidores no Instagram, 2.061 posts — audiência já construída, sem nenhum caminho de compra.</p>
+      </div>
+      <div>
+        <b class="c-crit">R$ 0</b>
+        <p class="k">em vendas online. Sem loja, sem carrinho, sem catálogo navegável, sem pagamento.</p>
+      </div>
+      <div>
+        <b class="c-warn">1 de 3</b>
+        <p class="k">distribuidoras diretas já montou loja online de verdade (Monaco). A dianteira digital do setor ainda está aberta.</p>
+      </div>
+    </div>
+    <p style="margin-top:26px">A Centro Oeste não tem um problema de reputação nem de operação — tem <strong>mais de 20 anos de mercado, três unidades e entrega no mesmo dia acima de 90%</strong>. O problema é de <strong>conversão digital</strong>: os ativos mais caros de conseguir (estoque e audiência) já existem, mas estão desconectados de qualquer sistema que transforme atenção em pedido. É exatamente o tipo de lacuna que se fecha rápido.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Onde está forte, onde está sangrando</span>
+    <h2>Saúde digital por dimensão</h2>
+    <p>Sete frentes que definem quanto do potencial comercial vira faturamento de fato.</p>
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-lbl">Presença social <small>Instagram ativo, 19k seguidores</small></div>
+        <div class="track"><div class="fill" style="width:72%;background:var(--good)"></div></div>
+        <div class="bar-num">72</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl">Reputação &amp; avaliações <small>4,6★ com 322 avaliações — forte, mas não usada</small></div>
+        <div class="track"><div class="fill" style="width:70%;background:var(--good)"></div></div>
+        <div class="bar-num">70</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl">Conversão do site <small>institucional, CTA p/ WhatsApp, sem funil</small></div>
+        <div class="track"><div class="fill" style="width:42%;background:var(--warn)"></div></div>
+        <div class="bar-num">42</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl">Achabilidade / SEO <small>não aparece em busca por peça</small></div>
+        <div class="track"><div class="fill" style="width:34%;background:var(--warn)"></div></div>
+        <div class="bar-num">34</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl">Atendimento &amp; automação <small>WhatsApp 100% manual</small></div>
+        <div class="track"><div class="fill" style="width:28%;background:var(--crit)"></div></div>
+        <div class="bar-num">28</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl">Dados &amp; rastreamento <small>sem pixel, sem analytics</small></div>
+        <div class="track"><div class="fill" style="width:15%;background:var(--crit)"></div></div>
+        <div class="bar-num">15</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl">Vendas online / e-commerce <small>inexistente</small></div>
+        <div class="track"><div class="fill" style="width:8%;background:var(--crit)"></div></div>
+        <div class="bar-num">8</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Quem realmente disputa seu mercado</span>
+    <h2>O mapa competitivo, dividido em dois</h2>
+    <p>Uma correção importante de rota: <strong>Mega e Bompreço são lojas de varejo</strong>, não distribuidoras do seu porte. Seus concorrentes diretos — distribuidoras atacadistas que atendem oficinas e revendas — são outros. E o quadro digital deles é o que decide sua estratégia.</p>
+
+    <h3 style="margin:30px 0 2px;font-size:1rem;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--steel)">Grupo 1 — Distribuidoras diretas (seus pares reais)</h3>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Frente</th>
+            <th class="you"><a href="https://centrooestedistribuidora.com.br/" target="_blank" rel="noopener">Centro Oeste &nearr;</a></th>
+            <th><a href="https://www.monacodistribuidora.com.br/" target="_blank" rel="noopener">Monaco &nearr;</a></th>
+            <th><a href="https://mixcomponentes.com.br/" target="_blank" rel="noopener">Mix Comp. &nearr;</a></th>
+            <th><a href="https://socialdistribuidora.com.br/" target="_blank" rel="noopener">Social &nearr;</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Loja online</th><td class="you"><span class="mk c-crit">Não</span></td><td><span class="mk c-good">Sim</span></td><td><span class="mk c-crit">Não</span></td><td><small>n/d</small></td></tr>
+          <tr><th>Catálogo</th><td class="you"><span class="mk c-warn">App externo</span> <small>sem preço</small></td><td><span class="mk c-good">PDF + busca</span></td><td><span class="mk c-warn">Só PDF</span></td><td><small>n/d</small></td></tr>
+          <tr><th>Instagram</th><td class="you"><span class="mk c-good">19k, ativo</span></td><td><span class="mk c-warn">Sim</span></td><td><span class="mk c-crit">Nenhum</span></td><td><small>n/d</small></td></tr>
+          <tr><th>Nota Google</th><td class="you"><span class="mk c-good">4,6★</span> <small>322</small></td><td><span class="mk c-good">4,7★</span></td><td><small>n/d</small></td><td><small>n/d</small></td></tr>
+          <tr><th>Contato principal</th><td class="you"><span class="mk c-good">WhatsApp</span></td><td><small>Tel / e-mail</small></td><td><small>WhatsApp</small></td><td><small>n/d</small></td></tr>
+          <tr><th>Porte declarado</th><td class="you"><small>25k itens · 3 unid.</small></td><td><small>50,8k clientes · 150 reps</small></td><td><small>23k itens · 5.500 m²</small></td><td><small>"maior do C-O" · 10.000 m²</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:18px">Leitura: o setor está <strong>digitalmente atrasado</strong>. Mix ainda vende por PDF e não tem rede social nenhuma; a Social, que se diz a maior, tem presença online tão fraca que quase não retorna conteúdo. <strong>Só a Monaco se moveu</strong> — montou loja e tem 4,7★. Ela é a régua a bater, não um abismo a alcançar.</p>
+
+    <h3 style="margin:32px 0 2px;font-size:1rem;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--steel)">Grupo 2 — Varejo / e-commerce (disputam a busca do consumidor)</h3>
+    <p><strong>Mega</strong> (desde 2002, +50k itens, loja /shop) e <strong>Bompreço</strong> (desde 1963, +30k itens, loja completa com busca por placa, PIX −5% e blog) não brigam pelo seu cliente B2B — mas <strong>capturam quem pesquisa peça no Google</strong> e some do seu radar. É a demanda online que hoje escoa pra eles, não pra você.</p>
+
+    <div class="money" style="margin-top:24px">
+      <span class="eyebrow" style="margin-bottom:8px">A vantagem que só você tem</span>
+      <p style="margin:0"><strong>Nenhum concorrente direto combina o que a Centro Oeste já tem na mão:</strong> 19 mil seguidores engajados + 25 mil itens + entrega no mesmo dia. A Monaco tem loja mas audiência menor; a Mix tem estoque mas zero social; a Social tem porte mas presença fraca. Quem ligar <strong>audiência → catálogo → checkout</strong> primeiro assume a posição de distribuidora digital líder de Goiás. Esse é o prêmio da reunião de hoje.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Priorizado por impacto × esforço</span>
+    <h2>As vulnerabilidades que estão custando dinheiro</h2>
+    <div class="vulns">
+      <div class="vuln crit">
+        <div class="rank">1</div>
+        <div>
+          <h3>Zero venda fora do horário comercial</h3>
+          <p>Todo pedido depende de um humano responder o WhatsApp. Noite, fim de semana e feriado — quando a oficina do cliente também está fechada e ele pesquisa peça — a Centro Oeste está invisível. O concorrente com loja recebe esse pedido.</p>
+          <span class="fixby">Resolve com → <b>Loja online + Agente de IA no WhatsApp</b></span>
+        </div>
+        <span class="sev crit">Impacto alto</span>
+      </div>
+      <div class="vuln crit">
+        <div class="rank">2</div>
+        <div>
+          <h3>19 mil seguidores sem caminho de compra</h3>
+          <p>A audiência mais difícil de construir já está pronta, mas o Instagram é vitrine sem caixa registradora. O único "catálogo" é um app de terceiros (baixecatalogo) sem preço, sem botão de pedido — que nem abre no iPhone ou no Mac. O desejo que cada post gera morre por falta de para onde ir.</p>
+          <span class="fixby">Resolve com → <b>Loja + conteúdo de conversão (CoreStudio)</b></span>
+        </div>
+        <span class="sev crit">Impacto alto</span>
+      </div>
+      <div class="vuln crit">
+        <div class="rank">3</div>
+        <div>
+          <h3>Invisível na busca por peça</h3>
+          <p>Quem digita "pastilha de freio Goiânia" ou o nome de uma peça no Google encontra Bompreço e Mega — que têm catálogo indexado e blog. A Centro Oeste, sem produtos online, não disputa esse tráfego de quem já está pronto pra comprar.</p>
+          <span class="fixby">Resolve com → <b>Catálogo indexável + SEO local</b></span>
+        </div>
+        <span class="sev crit">Impacto alto</span>
+      </div>
+      <div class="vuln warn">
+        <div class="rank">4</div>
+        <div>
+          <h3>Vendendo às cegas, sem dados</h3>
+          <p>Sem pixel e sem analytics, não dá pra saber de onde vem cada lead, o que os 19 mil seguidores fazem no site, nem impactar de novo quem quase comprou. É impossível otimizar tráfego pago ou remarketing sem essa base — e ela leva minutos pra instalar.</p>
+          <span class="fixby">Resolve com → <b>Pixel + Analytics + remarketing</b></span>
+        </div>
+        <span class="sev warn">Impacto médio</span>
+      </div>
+      <div class="vuln warn">
+        <div class="rank">5</div>
+        <div>
+          <h3>Prova social de 4,6★ guardada na gaveta</h3>
+          <p>São 322 avaliações e nota 4,6 no Google — praticamente empatando com a Monaco (4,7) e melhor que muita loja de varejo. Esse é um ativo de confiança que hoje não aparece em lugar nenhum: nem no site, nem no Instagram, nem convertido em argumento de venda. Reputação forte, invisível pra quem está decidindo.</p>
+          <span class="fixby">Resolve com → <b>Prova social no site + gestão de avaliações</b></span>
+        </div>
+        <span class="sev warn">Impacto médio</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">A conta que ninguém fez</span>
+    <h2>Quanto pode estar ficando na mesa</h2>
+    <div class="money">
+      <p style="margin:0">Cenário deliberadamente conservador, só para dimensionar a ordem de grandeza — os números reais se ajustam com o histórico de vendas da empresa.</p>
+      <div class="grid">
+        <div class="cell">
+          <b>~95</b>
+          <span>pedidos/mês se apenas <strong>0,5%</strong> dos 19 mil seguidores comprasse online</span>
+        </div>
+        <div class="cell">
+          <b>R$ 14 mil</b>
+          <span>faturamento novo/mês a um ticket conservador de <strong>R$ 150</strong></span>
+        </div>
+        <div class="cell">
+          <b>R$ 170 mil</b>
+          <span>por ano de receita que hoje simplesmente não tem por onde entrar</span>
+        </div>
+      </div>
+      <p class="assump">Estimativa ilustrativa (19.000 seguidores × 0,5% conversão mensal × R$ 150 de ticket). Não inclui a busca orgânica por peça que hoje vai pros concorrentes, nem os pedidos perdidos fora do horário comercial — que empurram esse número pra cima. Serve para a conversa, não como promessa.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">O que a Core entrega em 24 horas</span>
+    <h2>Quatro coisas no ar até amanhã</h2>
+    <p>Nenhuma delas é projeto de meses. São ganhos rápidos que já começam a fechar a lacuna — e provam valor antes de qualquer investimento grande.</p>
+    <div class="grid2">
+      <div class="qw">
+        <span class="prod">Core PV · Agente de IA</span>
+        <h3>WhatsApp que responde sozinho, 24/7</h3>
+        <p>Um agente de IA dentro do WhatsApp respondendo disponibilidade, cotação e dúvida de peça a qualquer hora — captando o pedido da madrugada e do domingo que hoje se perde. No ar em 24h.</p>
+      </div>
+      <div class="qw">
+        <span class="prod">IA &amp; Automação</span>
+        <h3>Pixel e analytics instalados</h3>
+        <p>Parar de vender às cegas hoje mesmo: rastreamento de visitantes, base de remarketing dos 19 mil seguidores e visibilidade de onde vem cada lead. Base de tudo que vier depois.</p>
+      </div>
+      <div class="qw">
+        <span class="prod">Reputação</span>
+        <h3>Colocar as 4,6★ pra trabalhar</h3>
+        <p>Trazer as 322 avaliações do Google pra dentro do site e do Instagram como prova social, e responder as mais recentes. A confiança que já existe passa a ajudar a fechar venda, em vez de ficar escondida.</p>
+      </div>
+      <div class="qw">
+        <span class="prod">Cloud Code &amp; Sites</span>
+        <h3>Catálogo digital navegável no ar</h3>
+        <p>Um protótipo do catálogo por categoria — clicável, buscável e com botão de pedido — pra mostrar concretamente como a loja completa vai funcionar. Da vitrine ao pedido.</p>
+      </div>
+    </div>
+
+    <a class="demo-cta" href="https://claude.ai/code/artifact/bd78b2a5-8bc0-4ff5-adfa-31950fd2f644" target="_blank" rel="noopener">
+      <div class="demo-txt">
+        <span class="d-eyebrow">Protótipo ao vivo · clique para abrir</span>
+        <b>Veja a loja funcionando agora</b>
+        <span class="d">Catálogo navegável, busca por peça e por placa, carrinho, dados do cliente e pedido direto no WhatsApp — com a marca da Centro Oeste e abrindo em qualquer aparelho. É a resposta prática às vulnerabilidades 1, 2 e 3 deste diagnóstico.</span>
+      </div>
+      <span class="demo-btn">Abrir protótipo &rarr;</span>
+    </a>
+  </section>
+
+  <section>
+    <span class="eyebrow">Depois do primeiro dia</span>
+    <h2>Roadmap de 90 dias</h2>
+    <div class="road">
+      <div class="phase">
+        <div class="when">30 dias</div>
+        <div class="goal">Ligar a máquina</div>
+        <ul>
+          <li>Loja online completa com carrinho, PIX e parcelamento</li>
+          <li>Catálogo dos 25 mil itens com busca por peça e por veículo</li>
+          <li>Instagram Shopping ligando os 19 mil seguidores à loja</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="when">60 dias</div>
+        <div class="goal">Trazer demanda</div>
+        <ul>
+          <li>SEO local + páginas de peça pra capturar busca orgânica</li>
+          <li>Tráfego pago estruturado (Meta + Google) com pixel já maduro</li>
+          <li>Remarketing de quem visitou e não comprou</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="when">90 dias</div>
+        <div class="goal">Automatizar o comercial</div>
+        <ul>
+          <li>Qualificação automática de lead B2B (oficinas e revendas)</li>
+          <li>Rotina de recompra e reativação de cliente inativo</li>
+          <li>Dashboard de vendas com origem de cada pedido</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="close">
+    <span class="eyebrow">Próximo passo</span>
+    <h2>Comece pelos ganhos de 24h.</h2>
+    <p>A recomendação é direta: rodar os quatro quick wins primeiro. Eles provam o modelo com risco baixo e já param parte do sangramento — enquanto a loja completa, o motor de verdade, é construída em paralelo nos primeiros 30 dias.</p>
+    <p>A Centro Oeste está a poucos passos de transformar 20 anos de estoque e 19 mil seguidores em vendas que acontecem sozinhas. O que falta não é reputação nem operação — é a camada digital que liga as duas coisas ao caixa.</p>
+    <div class="contact">
+      <b>Core Solution</b> — Automação, IA e sistemas digitais<br>
+      Diagnóstico preparado para reunião comercial · 09 jul 2026
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Core Solution · Diagnóstico Digital</span>
+    <span>Dados públicos coletados em 09/07/2026 · estimativas a validar com a empresa</span>
+  </div>
+</footer>
