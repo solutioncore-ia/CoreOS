@@ -203,7 +203,11 @@ Todo diagnóstico sai com a **precificação do pacote proposto** montada em seg
    5. **Cortar escopo, não preço** — a versão enxuta do pacote com valor e o que
       fica pra fase 2
    Formato: tabela da conta aberta + alavancas numeradas, tudo interno, pronto pra
-   consultar no celular durante a negociação.
+   consultar no celular durante a negociação. Antes da reunião de venda, o manual
+   vira um **guia de reunião** de uma página (HTML interno, marcado "não compartilhar"):
+   abertura de 60s em fala direta, números na ponta da língua, roteiro da reunião,
+   alavancas com frase pronta ("fala assim: ..."), linhas vermelhas (o que nunca
+   ceder), objeções prováveis com resposta e checklist do que coletar do cliente.
 4. Preço aprovado pelo usuário → só então montar a apresentação/proposta de
    fechamento. Sem aprovação de preço, não montar a apresentação.
 
