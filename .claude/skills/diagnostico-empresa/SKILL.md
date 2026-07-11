@@ -102,6 +102,30 @@ não como promessa.
 
 ---
 
+## Passo 5 — Resumo executivo (mata a charada sem abrir o relatório)
+
+O relatório HTML é a peça de apoio; **o resumo executivo é o que fecha quando ninguém tem
+tempo de assistir apresentação**. Entregar SEMPRE, junto do link do relatório, um resumo em
+bullets que caiba numa tela de WhatsApp e dê pra falar em 60-90 segundos. Ele também é o
+roteiro de abertura da apresentação, se ela acontecer.
+
+Estrutura (6-8 bullets, negrito no dado que importa, nessa ordem):
+
+1. **Score + veredito** em uma linha ("Score de Saúde Digital: 28/100. Não é problema de
+   produto — é que o funil não existe.")
+2. **O ângulo central** — o ativo caro que não converte, em uma frase falável
+3. **O achado que o cliente não sabe que aparece pra fora** — o momento "uau" do diagnóstico
+   (marca dividida, catálogo que não abre no iPhone, formulário quebrado…)
+4. **A janela competitiva** — o que nenhum concorrente fez ainda, ou a ameaça que está
+   chegando (com nome e número)
+5. **O plano de 24h em uma frase**, com a ordem certa — incluindo o que NÃO fazer antes
+   (ex.: tráfego pago antes do funil pronto)
+6. **O que ficou n/d** e o que o cliente precisa mandar pra fechar as lacunas
+
+Regras: sem jargão, sem promessa, cada bullet sustentado por dado do relatório (nada novo
+aparece só no resumo). Se for enviado por mensagem, deve funcionar sozinho — quem lê decide
+a reunião sem clicar no link.
+
 ## Estrutura e design do relatório
 
 Gere um HTML autocontido com a marca **do seu negócio** (é entregável seu, não do cliente).
@@ -159,6 +183,32 @@ Testar no número do próprio usuário, ou fazer o envio real ao vivo, com o cli
 
 ---
 
+## Depois do diagnóstico — precificação e proposta (fluxo obrigatório)
+
+Todo diagnóstico sai com a **precificação do pacote proposto** montada em seguida:
+
+1. Montar o preço dos quick wins + mensalidade usando SEMPRE a sua tabela de preços
+   (`financeiro/precificacao/estrutura-precificacao.md`, mantida pelo `/precificar`).
+   Item que não existir na tabela → rodar `/precificar` e adicionar lá antes de usar.
+2. Apresentar ao usuário a conta aberta: preço de tabela, pisos de desconto e a
+   margem de negociação que sobra (essa parte é interna — **não** vai pra
+   apresentação do cliente).
+3. Entregar SEMPRE junto o **manual de negociação** — o roteiro que o usuário leva
+   na mão pra reunião, com as alavancas em ordem de uso se o cliente apertar:
+   1. **Bônus em vez de desconto**: qual item vira bônus e quanto custa em horas —
+      o preço falado cai sem furar piso de tabela
+   2. **Mês grátis ou bônus de mensalidade** (barato e bom de falar)
+   3. **Piso da mensalidade** (reserva pra contrato anual, não oferecer de cara)
+   4. **Condição de pagamento** (entrada/entrega, parcelamento — sem mexer no total)
+   5. **Cortar escopo, não preço** — a versão enxuta do pacote com valor e o que
+      fica pra fase 2
+   Formato: tabela da conta aberta + alavancas numeradas, tudo interno, pronto pra
+   consultar no celular durante a negociação.
+4. Preço aprovado pelo usuário → só então montar a apresentação/proposta de
+   fechamento. Sem aprovação de preço, não montar a apresentação.
+
+---
+
 ## Checklist de qualidade
 
 - [ ] Achei o **ângulo central** (o ativo caro que não converte)?
@@ -168,3 +218,5 @@ Testar no número do próprio usuário, ou fazer o envio real ao vivo, com o cli
 - [ ] Tom de voz do seu negócio (ver `preferencias.md`), sem promessa impossível?
 - [ ] Tema claro **e** escuro funcionando? Fonte legível em tela?
 - [ ] Salvei em `saidas/`/pasta do cliente e publiquei o Artifact?
+- [ ] Entreguei o **resumo executivo** junto do link — bullets que matam a charada sem abrir o relatório?
+- [ ] Montei a **precificação + manual de negociação** pro usuário validar antes da proposta?
