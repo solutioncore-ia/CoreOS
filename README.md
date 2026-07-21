@@ -127,6 +127,25 @@ atrapalham nada, só não fazem nada até você rodar o setup.
 
 ---
 
+## Postagem automática — leia antes de ligar
+
+Se for ligar a fábrica de conteúdo com **publicação automática no Instagram** (fila do
+CorePV) e/ou **blog com deploy automático**, leia primeiro o
+**[PLAYBOOK-POSTAGEM-AUTOMATICA.md](PLAYBOOK-POSTAGEM-AUTOMATICA.md)**.
+
+Ele documenta, com o caso real da primeira implantação (07/2026), as armadilhas que
+custaram uma semana de calendário de um cliente. A principal, em uma frase:
+
+> **A fila do publicador é uma esteira, não uma agenda** — ela ignora a data do nome da
+> pasta e posta o próximo item a cada intervalo. Enfileirar vários dias de uma vez
+> publica tudo de uma vez.
+
+Também cobre: janela do publicador, ordem produção × publicação, `config.yaml` que é
+espelho, armadilhas de token/permissão do GitHub e por que o deploy do site tem que
+rodar no Linux via GitHub Actions.
+
+---
+
 ## A tese
 
 IA não é uma ferramenta que sua empresa usa. É o sistema operacional em
